@@ -1,9 +1,10 @@
 <ion-view view-title="My Expenses" hide-nav-bar="true">
-  <form ng-submit="start.addAmount(start.amount)">
+  <form ng-submit="start.addAmount()" novalidate>
     <div class="bar bar-header bar-balanced item-input-inset">
       <label class="item-input-wrapper">
         <i class="icon ion-social-usd placeholder-icon"></i>
-        <input type="number" step="0.01" placeholder="Add Amount"
+        <input type="number"
+          placeholder="Add Amount"
           ng-model="start.amount">
       </label>
       <button class="button button-clear">
