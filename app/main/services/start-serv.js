@@ -3,10 +3,7 @@ angular.module('main')
 .service('Start', function () {
   console.log('Hello from your Service: Start in module main');
 
-  // some initial data
-  this.someData = {
-    binding: 'Yes! Got that databinding working'
+  this.data = {
+    expenses: []
   };
-
-  // TODO: do your service thing
 });

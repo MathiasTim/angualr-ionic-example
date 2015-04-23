@@ -1,24 +1,27 @@
-<ion-view view-title="main module">
-  <ion-content>
+<ion-view view-title="My Expenses" hide-nav-bar="true">
+  <form ng-submit="start.addAmount(start.amount)">
+    <div class="bar bar-header bar-balanced item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-social-usd placeholder-icon"></i>
+        <input type="number" step="0.01" placeholder="Add Amount"
+          ng-model="start.amount">
+      </label>
+      <button class="button button-clear">
+        Add
+      </button>
+    </div>
+  </form>
+  <ion-content class="has-header has-footer">
     <ion-list>
       <ion-item class="item-divider">
-        This is your start template!
+        Last Spent
       </ion-item>
-      <ion-item class="item-icon-right">
-        <i class="ion-checkmark-circled"></i>
-        icons working?
+      <ion-item ng-repeat="item in start.data.expenses">
+        {{item.amount}} Euro
       </ion-item>
-      <ion-item class="item-avatar">
-        <img width="100" src="main/assets/images/yo@2x.png">
-        images working?
-      </ion-item>
-
-      <ion-item>{{start.someData.binding}}</ion-item>
-      <ion-item class="item-divider">Environment variables:</ion-item>
-      <ion-item class="item-text-wrap">
-        <pre>{{start.env | json}}</pre>
-      </ion-item>
-
     </ion-list>
   </ion-content>
+  <div class="bar bar-footer bar-balanced">
+    <div class="title">Total {{start.total()}} Euro</div>
+  </div>
 </ion-view>
