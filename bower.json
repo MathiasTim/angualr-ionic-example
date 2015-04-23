@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "ionic": "v1.0.0-rc.1",
+    "angular": "~1.3.14",
+    "angular-animate": "~1.3.14",
+    "angular-sanitize": "~1.3.14",
+    "angular-ui-router": "~0.2.13",
+    "ngCordova": "~0.1.12-alpha",
+    "angular-dynamic-locale": "~0.1.27",
+    "angular-translate": "~2.6.0",
+    "angular-translate-loader-static-files": "~2.6.0",
+    "angular-localForage": "~1.2.2",
+    "angular-touch": "~1.3.14"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "angular": "~1.3.14",
+    "angular-animate": "~1.3.14",
+    "angular-sanitize": "~1.3.14"
+  },
+  "name": "myExpenses",
+  "private": true
+}
