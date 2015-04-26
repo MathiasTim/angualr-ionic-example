@@ -17,6 +17,10 @@ angular.module('main', [
       url: '/main',
       templateUrl: 'main/templates/start.html',
       controller: 'StartCtrl as start'
+    })
+    .state('detail', {
+      url: '/detail/:id',
+      templateUrl: 'main/templates/detail.html',
+      controller: 'DetailCtrl as detail'
     });
-  // TODO: do your thing
 });

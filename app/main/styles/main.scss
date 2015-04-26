@@ -26,3 +26,6 @@ $ionicons-font-path: "../assets/fonts" !default;
 // @import "../../<module>/styles"
 
 
+input.error {
+  color: $assertive;
+}

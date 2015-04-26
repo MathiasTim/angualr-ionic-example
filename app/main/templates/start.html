@@ -1,10 +1,13 @@
 <ion-view view-title="My Expenses" hide-nav-bar="true">
-  <form ng-submit="start.addAmount()" novalidate>
+  <form ng-submit="start.addAmount()" novalidate
+    name="expenses">
     <div class="bar bar-header bar-balanced item-input-inset">
       <label class="item-input-wrapper">
         <i class="icon ion-social-usd placeholder-icon"></i>
         <input type="number"
+          name="amount"
           placeholder="Add Amount"
+          ng-class="{'error': expenses.amount.$error.number}"
           ng-model="start.amount">
       </label>
       <button class="button button-clear">
@@ -17,7 +20,8 @@
       <ion-item class="item-divider">
         Last Spent
       </ion-item>
-      <ion-item ng-repeat="item in start.data.expenses">
+      <ion-item ng-repeat="item in start.data.expenses"
+        ui-sref="detail({id: item.tracked})">
         {{item.amount}} Euro
       </ion-item>
     </ion-list>
