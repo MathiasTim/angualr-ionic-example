@@ -1,15 +1,17 @@
 'use strict';
 angular.module('main')
-.controller('StartCtrl', function (Start, Config) {
+.controller('StartCtrl', function ($window, Start, Config) {
 
   // bind data from service
   this.data = Start.data;
+  this.categories = Start.categories;
   this.env = Config.ENV;
+  this.deviceWidth = $window.screen.width;
 
   console.log('Hello from your Controller: StartCtrl in module main:. This is your scope:', this);
 
   // use this function to add the desired amount
-  this.addAmount = function () {
+  this.addAmount = function (category) {
     if (!this.amount) {
       return; // leave method when amount is empty
     }
@@ -17,6 +19,7 @@ angular.module('main')
     // use a simple js array
     this.data.expenses.push(
       {
+        category: category,
         amount: this.amount,
         tracked: new Date().getTime() // add a timestamp in milliseconds
       }
@@ -32,5 +35,15 @@ angular.module('main')
       total +=  isNaN(item.amount) ? 0 : item.amount;
     });
     return total;
+  };
+
+  this.getCategory = function (id) {
+    var category = null;
+    angular.forEach(this.categories, function (item) {
+      if (id === item.id) {
+        category = item;
+      }
+    });
+    return category;
   };
 });

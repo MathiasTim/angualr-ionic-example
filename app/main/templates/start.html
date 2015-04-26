@@ -1,24 +1,39 @@
 <ion-view view-title="My Expenses" hide-nav-bar="true">
-  <form ng-submit="start.addAmount()" novalidate>
+  <form novalidate name="expenses">
     <div class="bar bar-header bar-balanced item-input-inset">
       <label class="item-input-wrapper">
         <i class="icon ion-social-usd placeholder-icon"></i>
         <input type="number"
+          name="amount"
           placeholder="Add Amount"
-          ng-model="start.amount">
+          ng-model="start.amount"
+          ng-style="expenses.amount.$error.number ? {color: 'red'} : {}">
       </label>
-      <button class="button button-clear">
-        Add
-      </button>
+    </div>
+    <div class="bar bar-subheader bar-balanced">
+      <section>
+        <ion-scroll direction="x" scrollbar-x="false" style="width: {{start.deviceWidth}}px;">
+          <div style="width: {{start.deviceWidth * 2}}px;">
+            <button type="button"
+              class="button button-icon {{category.icon}}"
+              ng-click="start.addAmount(category.id)"
+              ng-repeat="category in start.categories">
+              {{category.name}}
+            </button>
+          </div>
+        </ion-scroll>
+      </section>
     </div>
   </form>
-  <ion-content class="has-header has-footer">
+  <ion-content class="has-header has-subheader has-footer">
     <ion-list>
       <ion-item class="item-divider">
         Last Spent
       </ion-item>
-      <ion-item ng-repeat="item in start.data.expenses">
-        {{item.amount}} Euro
+      <ion-item class="item-icon-left"
+        ng-repeat="item in start.data.expenses">
+        <i class="icon {{start.getCategory(item.category).icon}}"></i>
+        {{item.amount}} Euro - {{item.tracked|date:'short'}}
       </ion-item>
     </ion-list>
   </ion-content>
