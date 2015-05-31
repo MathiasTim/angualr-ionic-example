@@ -37,6 +37,7 @@ angular.module('main')
     return total;
   };
 
+  // this method searches the category by id so we can display the correct icon
   this.getCategory = function (id) {
     var category = null;
     angular.forEach(this.categories, function (item) {
