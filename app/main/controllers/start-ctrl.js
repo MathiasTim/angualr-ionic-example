@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.controller('StartCtrl', function ($window, Start, Config) {
+.controller('StartCtrl', function ($scope, $window, $localForage, Start, Config) {
 
   // bind data from service
   this.data = Start.data;
@@ -15,7 +15,6 @@ angular.module('main')
     if (!this.amount) {
       return; // leave method when amount is empty
     }
-
     // use a simple js array
     this.data.expenses.push(
       {
@@ -24,6 +23,8 @@ angular.module('main')
         tracked: new Date().getTime() // add a timestamp in milliseconds
       }
     );
+    // store the data in local storage
+    $localForage.setItem('expenses', this.data.expenses);
     this.amount = null; // to clear the amount field after the add
   };
 

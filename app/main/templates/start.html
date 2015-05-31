@@ -31,13 +31,13 @@
         Last Spent
       </ion-item>
       <ion-item class="item-icon-left"
-        ng-repeat="item in start.data.expenses">
+        ng-repeat="item in start.data.expenses | orderBy:'tracked':true">
         <i class="icon {{start.getCategory(item.category).icon}}"></i>
-        {{item.amount}} Euro - {{item.tracked|date:'short'}}
+        {{item.amount|currency:''}} Euro - {{item.tracked|date:'short'}}
       </ion-item>
     </ion-list>
   </ion-content>
   <div class="bar bar-footer bar-balanced">
-    <div class="title">Total {{start.total()}} Euro</div>
+    <div class="title">Total {{start.total() | currency:''}} Euro</div>
   </div>
 </ion-view>
